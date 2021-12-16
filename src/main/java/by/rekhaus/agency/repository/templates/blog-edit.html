@@ -1,0 +1,40 @@
+<!--
+Форма редактирования
+Для того чтобы форма обрабатывалась на открытой странице (по открытому URL адресу) в параметрах формы удаляем action.
+Для подставления данных из БД необходимо создать цикл который будет перебирать данные полученные из таблицы
+для этого:
+1. Создаем <div>
+2. Помещаем в него формочку
+3. В параметрах тега <div> обращаемся к thymeleaf и вызываем его свойство each
+   <div th:each="el:${allposts}">
+4. Для отображения данных в полях ввода в теге <input> обращаемся к thymeleaf и вызываем его свойство value в параметрах
+   value выбираем интересующий элемент из таблицы БД
+   th:value="${el.getTitle()}"
+/*-->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="blocks/head :: head"></head>
+
+<body>
+<div class="container py-3">
+    <!-- <p th:text="'Привет ' + ${title}"></p>-->
+    <header th:insert="blocks/header :: header"></header>
+    <div class="container mt-5 mb-5">
+        <H1 th:text="${title}"></H1>
+        <div th:each="el:${allposts}">
+            <form method="post">
+                <input type="text" th:value="${el.getTitle()}" name="title" placeholder="Введите заголовок"
+                       class="form-control mb-2">
+                <input type="text" th:value="${el.getAnons()}" name="anons" placeholder="Введите анонс статьи"
+                       class="form-control mb-2">
+                <textarea th:text="${el.getFull_text()}" name="full_text" placeholder="Напишите сатью"
+                          class="form-control" mb-2/>
+                <button type="submit" class="btn btn-success mt-2">Обновить</button>
+            </form>
+        </div>
+    </div>
+    <footer th:insert="blocks/footer :: footer" class="text-muted py-5"></footer>
+</div>
+</body>
+</html>

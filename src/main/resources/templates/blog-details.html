@@ -1,0 +1,29 @@
+<!--
+Для удаления необходимо редактировать кнопку Удалить
+1. Кнопка должна находится внутри формочки
+2. При ее нажатии должен отправляться POST запрос
+3. Данные должны обработаться в контроллере после чего удалиться
+
+
+-->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="blocks/head :: head"/>
+<body>
+<div class="container py-3">
+    <header th:insert="blocks/header :: header"></header>
+    <div class="container py-3"><H1 th:text="${title}"></H1></div>
+    <div th:each="el : ${allposts}" class="alert alert-info mt-2">
+        <h1 th:text="${el.getTitle()}"></h1>
+        <p th:text="${el.full_text}"></p>
+        <p><b>Просмотры</b> <span th:text="${el.getViews()}"/></p>
+        <a th:href="'/blog/' + ${el.getId()} + '/edit'" class="btn btn-warning">Редактировать</a>
+        <form th:action="'/blog/' + ${el.getId()} + '/delite'" method="post">
+            <button class="btn btn-warning mt-2" type="submit">Удалить</button>
+        </form>
+    </div>
+    <footer th:insert="blocks/footer :: footer" class="text-muted py-5"></footer>
+</div>
+</body>
+</html>
