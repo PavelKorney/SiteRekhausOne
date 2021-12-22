@@ -60,6 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Только для админа
         http.authorizeRequests().antMatchers("/admin", "/blog/add", "/blog/{id}/edit").access("hasRole('ROLE_ADMIN')");
         http.authorizeRequests().antMatchers( "/blog/{id}/delete" ).access("hasRole('ROLE_ADMIN')");
+
         // Когда пользователь вошел в систему под именем XX.
         // Но при доступе к странице, для которой требуется роль YY,
         // будет вызвано исключение AccessDeniedException
