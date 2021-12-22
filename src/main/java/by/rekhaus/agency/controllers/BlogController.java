@@ -135,15 +135,15 @@ public class BlogController {
         post.setAnons(anons);
         post.setFull_text(full_text);
         postRepository.save(post);
-        return "redirect:/";
+        return "redirect:/blog";
     }
 
     //Обработка POST запроса из формы удаление статьи
-    @PostMapping("/blog/{id}/delite")
-    public String blogPostDelite(@PathVariable(value = "id") Long postId,
+    @PostMapping("/blog/{id}/delete")
+    public String blogPostDelete(@PathVariable(value = "id") Long postId,
                                  Model model) {
         Post post = postRepository.findById(postId).orElseThrow(IllegalStateException::new);
         postRepository.delete(post);
-        return "redirect:/";
+        return "redirect:/blog";
     }
 }

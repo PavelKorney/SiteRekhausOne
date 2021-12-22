@@ -19,7 +19,7 @@
         <p th:text="${el.full_text}"></p>
         <p><b>Просмотры</b> <span th:text="${el.getViews()}"/></p>
         <a th:href="'/blog/' + ${el.getId()} + '/edit'" class="btn btn-warning">Редактировать</a>
-        <form th:action="'/blog/' + ${el.getId()} + '/delite'" method="post">
+        <form th:action="'/blog/' + ${el.getId()} + '/delete'" method="post">
             <button class="btn btn-warning mt-2" type="submit">Удалить</button>
         </form>
     </div>
