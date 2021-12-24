@@ -12,6 +12,11 @@ public class PageControllers {
         model.addAttribute("title", "Главная страница");
         return "index";
     }
+    @GetMapping("/index_admin")
+    public String index_admin(Model model) {
+        model.addAttribute("title", "Главная страница");
+        return "admin/index_admin";
+    }
 
     @GetMapping("/about")
     public String about(Model model) {
@@ -19,34 +24,16 @@ public class PageControllers {
         return "about";
     }
 
-    @GetMapping("/contacts")
+    @GetMapping("/contact")
     public String contacts(Model model) {
         model.addAttribute("title", "Контакты");
-        return "contacts";
+        return "contact";
     }
 
     @GetMapping("/ProfessionalPhotography")
     public String ProfessionalPhotography(Model model) {
         model.addAttribute("title", "Профессиональная фотосъемка");
         return "ProfessionalPhotography";
-    }
-
-    @GetMapping("/product")
-    public String product(Model model) {
-        model.addAttribute("title", "Продукты");
-        return "product";
-    }
-
-    @GetMapping("/price")
-    public String price(Model model) {
-        model.addAttribute("title", "Цены");
-        return "price";
-    }
-
-    @GetMapping("/portfolio")
-    public String portfolio(Model model) {
-        model.addAttribute("title", "Портфолио");
-        return "portfolio";
     }
 
 

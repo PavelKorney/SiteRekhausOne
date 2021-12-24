@@ -19,7 +19,7 @@
 <body style="background: lightgrey">
 <div class="container py-3">
     <!-- <p th:text="'Привет ' + ${title}"></p>-->
-    <header th:insert="blocks/header :: header"></header>
+    <header th:insert="admin/header_admin :: header_admin"></header>
     <div class="container mt-5 mb-5">
         <H1 th:text="${title}"></H1>
         <div th:each="el:${allposts}">

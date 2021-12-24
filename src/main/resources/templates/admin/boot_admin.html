@@ -1,0 +1,36 @@
+
+<head th:insert="blocks/head :: head"/>
+<div th:fragment="header_admin">
+    <div class="header-bottom">
+        <div class="header-sticky" style="background-color: yellowgreen">
+            <div class="container">
+                <div class="row align-items-center position-relative">
+
+                    <!-- Header Menu Start -->
+                    <div class="col-lg-10 d-none d-lg-block">
+
+                        <div class="main-menu">
+                            <ul>
+                                <li class="has-children">
+                                    <a href="/index_admin"><b style="font-size: large">ПАНЕЛЬ АДМИНИСТРАТОРА</b> </a>
+                                </li>
+
+                                <li class="has-children">
+                                    <a href="#">Статьи </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/blog/add">Добавить статью</a></li>
+                                        <li><a href="/blog_admin">Редактирование статьи</a></li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- Header Menu End -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

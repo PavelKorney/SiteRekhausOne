@@ -77,12 +77,22 @@ public class BlogController {
         model.addAttribute("title", "Страница блога");
         return "blog-main";
     }
+    @GetMapping("/blog_admin")
+    public String index_admin(Model model) {
+        Iterable<Post> posts = postRepository.findAll();
+        model.addAttribute("posts", posts);
+        model.addAttribute("title", "Страница блога");
+        return "admin/blog-main_admin";
+    }
+
 
     @GetMapping("/blog/add")
     public String blogAdd(Model model) {
         model.addAttribute("title", "Добавить статью");
         return "blog-add";
     }
+
+
 
     //Обработка POST запроса из формы добавления статьи
     @PostMapping("/blog/add")
@@ -93,6 +103,20 @@ public class BlogController {
         Post post = new Post(title, anons, full_text);
         postRepository.save(post);
         return "redirect:/blog";
+    }
+
+    // Обработчик запроса для отображения страницы с полным текстом статьи
+    @GetMapping("admin/blog_admin/{id}")
+    public String blogDetails_admin(@PathVariable(value = "id") Long postId, Model model) {
+        if (!postRepository.existsById(postId)) {
+            return "redirect:/blog";
+        }
+        model.addAttribute("title", "Полная статья");
+        Optional<Post> post = postRepository.findById(postId);
+        ArrayList<Post> res = new ArrayList<>();
+        post.ifPresent(res::add);
+        model.addAttribute("allposts", res);
+        return "admin/blog-details_admin";
     }
 
     // Обработчик запроса для отображения страницы с полным текстом статьи
@@ -135,7 +159,7 @@ public class BlogController {
         post.setAnons(anons);
         post.setFull_text(full_text);
         postRepository.save(post);
-        return "redirect:/blog";
+        return "redirect:/blog_admin";
     }
 
     //Обработка POST запроса из формы удаление статьи
@@ -144,6 +168,6 @@ public class BlogController {
                                  Model model) {
         Post post = postRepository.findById(postId).orElseThrow(IllegalStateException::new);
         postRepository.delete(post);
-        return "redirect:/blog";
+        return "redirect:/blog_admin";
     }
 }

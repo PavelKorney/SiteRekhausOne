@@ -29,7 +29,7 @@ public class MainController {
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
 
-        return "adminPage";
+        return "admin/boot_admin";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

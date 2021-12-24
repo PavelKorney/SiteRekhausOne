@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // /На странице userInfo требуется войти в систему как ROLE_USER или ROLE_ADMIN.
         // Если входа в систему нет, он будет перенаправлен на страницу /входа в систему.
         http.authorizeRequests().antMatchers("/userInfo", "/price").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
-
+        http.authorizeRequests().antMatchers("/", "/home", "/js/**", "/css/**", "/img/**", "/blog", "/contact", "/about").permitAll();
         // Только для админа
         http.authorizeRequests().antMatchers("/admin", "/blog/add", "/blog/{id}/edit").access("hasRole('ROLE_ADMIN')");
         http.authorizeRequests().antMatchers("/blog/{id}/delete").access("hasRole('ROLE_ADMIN')");
@@ -71,7 +71,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Отправь URL-адрес страницы входа в систему.
                 .loginProcessingUrl("/j_spring_security_check") // Submit URL
                 .loginPage("/login")//
-                .defaultSuccessUrl("/userAccountInfo")//
+                .defaultSuccessUrl("/admin")//
                 .failureUrl("/login?error=true")//
                 .usernameParameter("username")//
                 .passwordParameter("password")

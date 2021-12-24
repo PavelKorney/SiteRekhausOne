@@ -1,4 +1,4 @@
-<div th:fragment="header">
+<div th:fragment="header_admin">
 
 
     <div class="navbar navbar-dark bg-primary  shadow-sm">
@@ -8,10 +8,14 @@
                 <strong><ya-tr-span style="text-align: center"  data-index="6-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value= "/Rekhaus" data-translation="Рекхаус" data-type="trSpan">Рекламное агенство Рекхаус</ya-tr-span></strong>
             </a>
 
-            <div class="col-lg-3 d-none d-lg-block">
+            <div class="col-lg-5 d-none d-lg-block">
 
                 <div class="main-menu">
                     <ul>
+                        <li class="has-children">
+                            <a href="/admin" >Панель администратора </a>
+
+                        </li>
                       <li class="has-children">
                             <a href="#" >Темы </a>
                             <ul class="sub-menu">
@@ -47,7 +51,7 @@
                         <div class="main-menu">
                             <ul>
                                 <li class="has-children">
-                                    <a href="/"th:utext="#{main_booton}">Главная</a>
+                                    <a href="/index_admin"th:utext="#{main_booton}">Главная</a>
                                 </li>
 
                                 <li class="has-children">
@@ -68,6 +72,9 @@
                                 </li>
                                 <li class="has-children">
                                     <a href="/blog">Блог </a>
+                                </li>
+                                <li class="has-children">
+                                    <a href="/blog/add">Добавить статью </a>
                                 </li>
                                 <li><a href="/about" >О нас</a></li>
                                 <li><a href="/portfolio" >Портфолио</a></li>
