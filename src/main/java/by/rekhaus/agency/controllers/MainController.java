@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
 
-    @RequestMapping(value = { "/registration", "/welcome" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/registration", "/welcome"}, method = RequestMethod.GET)
     public String welcomePage(Model model) {
         model.addAttribute("title", "Привет!");
         model.addAttribute("message", " Добро пожаловать на сайт рекламного агентства Рекхаус");

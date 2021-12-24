@@ -10,7 +10,6 @@ package by.rekhaus.agency.service;
 // с помощью @Service чтобы сказать Spring управлять им как Spring BEAN
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 

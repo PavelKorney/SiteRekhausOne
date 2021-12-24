@@ -18,26 +18,31 @@ public class PageControllers {
         model.addAttribute("title", "О нас");
         return "about";
     }
+
     @GetMapping("/contacts")
     public String contacts(Model model) {
         model.addAttribute("title", "Контакты");
         return "contacts";
     }
+
     @GetMapping("/ProfessionalPhotography")
     public String ProfessionalPhotography(Model model) {
         model.addAttribute("title", "Профессиональная фотосъемка");
         return "ProfessionalPhotography";
     }
+
     @GetMapping("/product")
     public String product(Model model) {
         model.addAttribute("title", "Продукты");
         return "product";
     }
+
     @GetMapping("/price")
     public String price(Model model) {
         model.addAttribute("title", "Цены");
         return "price";
     }
+
     @GetMapping("/portfolio")
     public String portfolio(Model model) {
         model.addAttribute("title", "Портфолио");

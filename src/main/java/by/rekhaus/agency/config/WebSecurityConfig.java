@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Только для админа
         http.authorizeRequests().antMatchers("/admin", "/blog/add", "/blog/{id}/edit").access("hasRole('ROLE_ADMIN')");
-        http.authorizeRequests().antMatchers( "/blog/{id}/delete" ).access("hasRole('ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers("/blog/{id}/delete").access("hasRole('ROLE_ADMIN')");
 
         // Когда пользователь вошел в систему под именем XX.
         // Но при доступе к странице, для которой требуется роль YY,
@@ -78,7 +78,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Конфигурация для страницы выхода из системы
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
 
-        // Config Remember Me.
+        // Счетчик повторной аутентификации настроен на 24 часа Remember Me.
         http.authorizeRequests().and() //
                 .rememberMe().tokenRepository(this.persistentTokenRepository()) //
                 .tokenValiditySeconds(1 * 24 * 60 * 60); // 24h
@@ -91,6 +91,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         db.setDataSource(dataSource);
         return db;
     }
-
-
+    // Token stored in Memory (Of Web Server).
+    //  @Bean
+    //  public PersistentTokenRepository persistentTokenRepository() {
+    //   InMemoryTokenRepositoryImpl memory = new InMemoryTokenRepositoryImpl();
+    //     return memory;
 }
+
+
+
